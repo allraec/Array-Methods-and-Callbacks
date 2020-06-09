@@ -67,10 +67,8 @@ Parameters:
  */
 
 function getWinnersByYear(callbackF1, callbackF2) {
-    const year = callbackF1;
-    const winners = callbackF2;
-    for (let i = 0; i<year.length; i++){
-        console.log(`In ${year[i]}, ${winners[i]} won the world cup!`);
+    for (let i = 0; i<callbackF1.length; i++){
+        console.log(`In ${callbackF1[i]}, ${callbackF2[i]} won the world cup!`);
     }
 };
 
@@ -78,13 +76,12 @@ getWinnersByYear(getYears(getFinals(fifaData)), getWinners(getFinals(fifaData)))
 
 /* Task 7: Write a function called `getAverageGoals` that accepts a parameter `data` and returns the the average number of home team goals and away team goals scored per match (Hint: use .reduce and do this in 2 steps) */
 
-function getAverageGoals(/* code here */) {
+function getAverageGoals(callbackF){
+    console.log("Average Home Team Goals:" + ((callbackF.reduce((accumulator, callbackF) => accumulator + callbackF["Home Team Goals"], 0))/callbackF.length).toFixed(2));
+    console.log("Average Away Team Goals:" + ((callbackF.reduce((accumulator, callbackF) => accumulator + callbackF["Away Team Goals"], 0))/callbackF.length).toFixed(2));
+}
 
-    /* code here */
-
-};
-
-getAverageGoals();
+getAverageGoals(fifaData);
 
 /// STRETCH 🥅 //
 
@@ -123,4 +120,4 @@ function badDefense(/* code here */) {
 
 badDefense();
 
-/* If you still have time, use the space below to work on any stretch goals of your chosing as listed in the README file. */
+/* If you still have time, use the space below to work on any stretch goals of your choosing as listed in the README file. */
